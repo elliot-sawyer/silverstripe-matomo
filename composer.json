@@ -1,0 +1,30 @@
+{
+    "name": "elliotsawyer/silverstripe-matomo",
+    "type": "silverstripe-vendormodule",
+    "description": "Install Matomo analytics tracking on your SilverStripe website",
+    "homepage": "http://silverstripe.org",
+    "license": "MIT",
+    "keywords": [
+        "silverstripe",
+        "new zealand",
+        "nz",
+        "analytics",
+        "matomo",
+        "piwik"
+    ],
+    "authors": [
+        {
+            "name": "elliot sawyer"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4"
+    },
+    "require-dev": {
+        "scriptfusion/phpunit-immediate-exception-printer": "^1"
+    },
+    "suggest": {
+        "firesphere/cspheaders": "For creating and managing a strict content security policy"
+    },
+    "extra": []
+}

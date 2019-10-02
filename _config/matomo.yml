@@ -1,0 +1,19 @@
+---
+Name: silverstripe-matomo
+After:
+    - 'siteconfig'
+---
+SilverStripe\CMS\Controllers\ContentController:
+  extensions:
+    - ElliotSawyer\Matomo\MatomoExtension
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - ElliotSawyer\Matomo\MatomoSiteConfigExtension
+SilverStripe\Security\Member:
+  extensions:
+    - ElliotSawyer\Matomo\MatomoMemberExtension
+ElliotSawyer\Matomo\MatomoExtension:
+  excluded_controllers: [] #default: no exclusions
+  show_on_dev: false #default: don't show in dev mode
+  show_on_test: false #default: don't show in test mode
+  show_on_live: true #default: show in live mode

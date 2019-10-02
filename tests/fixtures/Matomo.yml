@@ -1,0 +1,21 @@
+SilverStripe\SiteConfig\SiteConfig:
+  good1:
+    MatomoTrackingURL: '//matomo.test/'
+    MatomoSiteId: 1234
+  good2:
+    MatomoTrackingURL: '//matomo.test'
+    MatomoSiteId: 1234
+  good3:
+    MatomoTrackingURL: 'http://matomo.test'
+    MatomoSiteId: 1234
+  good4:
+    MatomoTrackingURL: 'https://matomo.test'
+    MatomoSiteId: 1234
+  bad1:
+    MatomoTrackingURL: '//matomo.test////////'
+    MatomoSiteId: 1234
+
+  emptytemplate1:
+    MatomoTrackingURL: '//matomo.test/'
+  emptytemplate2:
+    MatomoSiteId: 1234
