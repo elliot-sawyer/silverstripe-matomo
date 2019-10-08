@@ -1,0 +1,20 @@
+
+---
+version: 2
+plugins:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - php
+  phpcodesniffer:
+    enabled: true
+  fixme:
+    enabled: true
+  phpmd:
+    enabled: true
+  sonar-php:
+    enabled: true
+exclude_patterns:
+  - docs/*
+  - tests/*
