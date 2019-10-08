@@ -1,3 +1,10 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/elliot-sawyer/silverstripe-matomo/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/elliot-sawyer/silverstripe-matomo/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/elliot-sawyer/silverstripe-matomo/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/elliot-sawyer/silverstripe-matomo/?branch=master)
+[![CircleCI](https://circleci.com/gh/elliot-sawyer/silverstripe-matomo.svg?style=svg)](https://circleci.com/gh/elliot-sawyer/silverstripe-matomo)
+
+
+[![codecov](https://codecov.io/gh/elliot-sawyer/silverstripe-matomo/branch/master/graph/badge.svg)](https://codecov.io/gh/elliot-sawyer/silverstripe-matomo)
+
 # SilverStripe Matomo integration
 Adds Matomo analytics tracking to your SilverStripe website
 
