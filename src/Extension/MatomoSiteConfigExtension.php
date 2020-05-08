@@ -43,6 +43,8 @@ class MatomoSiteConfigExtension extends DataExtension {
 
     public function onBeforeWrite()
     {
-        $this->owner->MatomoTrackingURL = $this->getProtocolAgnosticHostname();
+        if($this->owner->MatomoTrackingURL) {
+            $this->owner->MatomoTrackingURL = $this->getProtocolAgnosticHostname();
+        }
     }
 }
