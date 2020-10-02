@@ -1,20 +1,29 @@
 <?php
+
 namespace ElliotSawyer\Matomo;
 
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ToggleCompositeField;
 use SilverStripe\ORM\DataExtension;
 
-class MatomoSiteConfigExtension extends DataExtension {
-
+/**
+ * Class \ElliotSawyer\Matomo\MatomoSiteConfigExtension
+ *
+ * @property SiteConfig|MatomoSiteConfigExtension $owner
+ * @property string $MatomoTrackingURL
+ * @property int $MatomoSiteId
+ */
+class MatomoSiteConfigExtension extends DataExtension
+{
     private static $db = [
         'MatomoTrackingURL' => 'Varchar(255)',
-        'MatomoSiteId' => 'Int'
+        'MatomoSiteId'      => 'Int'
     ];
 
     public function updateCMSFields(\SilverStripe\Forms\FieldList $fields)
     {
-        $fields->addFieldToTab('Root.Analytics',
+        $fields->addFieldToTab(
+            'Root.Analytics',
             ToggleCompositeField::create(
                 'MatomoToggle',
                 'Matomo',
@@ -38,7 +47,6 @@ class MatomoSiteConfigExtension extends DataExtension {
         $hostname = '//' . $hostname;
 
         return $hostname;
-
     }
 
     public function onBeforeWrite()

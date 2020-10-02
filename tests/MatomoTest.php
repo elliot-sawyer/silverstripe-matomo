@@ -1,11 +1,14 @@
 <?php
+
 namespace ElliotSawyer\Matomo;
 
-use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\SiteConfig\SiteConfig;
 
-class MatomoTest extends SapphireTest {
+class MatomoTest extends SapphireTest
+{
     protected static $fixture_file = 'fixtures/Matomo.yml';
+
     public function testMatomoSiteConfigFields()
     {
         //applied via SiteConfig
@@ -48,7 +51,7 @@ class MatomoTest extends SapphireTest {
     public function testTrackingCode()
     {
         $config1 = $this->objFromFixture(SiteConfig::class, 'good1');
-        $actual = (string) Matomo::tracking_code(
+        $actual = (string)Matomo::tracking_code(
             $config1->MatomoTrackingURL,
             $config1->MatomoSiteId
         );

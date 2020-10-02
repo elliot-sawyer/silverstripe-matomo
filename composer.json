@@ -21,7 +21,9 @@
         "silverstripe/framework": "^4"
     },
     "require-dev": {
-        "scriptfusion/phpunit-immediate-exception-printer": "^1"
+        "phpunit/phpunit": "^5.7",
+        "scriptfusion/phpunit-immediate-exception-printer": "^1",
+        "squizlabs/php_codesniffer": "^3.0"
     },
     "suggest": {
         "firesphere/cspheaders": "For creating and managing a strict content security policy"
