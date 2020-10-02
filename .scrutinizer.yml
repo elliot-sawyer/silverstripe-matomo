@@ -3,24 +3,14 @@ checks:
 
 build:
   nodes:
-    coverage:
-      tests:
-        override:
-          - command: ./my-test-run
-            coverage:
-              file: path/to/coverage-data
-
-              # These formats are supported:
-              # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
-              format: name-of-format
     analysis:
       tests:
         override: [php-scrutinizer-run]
-      cache:
-        directories:
-          - vendor/
+
 filter:
-  paths: ["src/*"]
+  paths: ["src/*", "tests/*"]
+  excluded_paths:
+    - "tests/mock/"
 
 tools:
   external_code_coverage: true
