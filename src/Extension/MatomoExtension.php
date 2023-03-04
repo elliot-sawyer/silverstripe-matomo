@@ -13,7 +13,7 @@ class MatomoExtension extends Extension {
             $siteConfig->MatomoSiteId
         );
         if($matomoCode) {
-            Requirements::customScript($matomoCode, true);
+            Requirements::customScript($matomoCode, 'matomo-code');
         }
     }
 }
