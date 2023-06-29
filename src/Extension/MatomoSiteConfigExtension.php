@@ -28,15 +28,18 @@ class MatomoSiteConfigExtension extends DataExtension {
 
     private function getProtocolAgnosticHostname()
     {
-        $hostname = rtrim($this->owner->MatomoTrackingURL);
-        $hostname = rtrim($hostname, '/');
-        $hostname .= '/';
+        $hostname = '';
+        if ($this->owner->MatomoTrackingURL) {
+            $hostname = rtrim($this->owner->MatomoTrackingURL);
+            $hostname = rtrim($hostname, '/');
+            $hostname .= '/';
 
-        $hostname = ltrim($hostname);
-        $hostname = str_replace(['http://', 'https://', '//'], '', $hostname);
+            $hostname = ltrim($hostname);
+            $hostname = str_replace(['http://', 'https://', '//'], '', $hostname);
 
-        $hostname = '//' . $hostname;
-
+            $hostname = '//' . $hostname;
+        }
+        
         return $hostname;
 
     }
