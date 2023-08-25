@@ -5,7 +5,7 @@ use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\Requirements;
 
 class MatomoExtension extends Extension {
-    public function onAfterInit(&$controller)
+    public function onAfterInit($controller = null)
     {
         $siteConfig = SiteConfig::current_site_config();
         $matomoCode = Matomo::tracking_code(
