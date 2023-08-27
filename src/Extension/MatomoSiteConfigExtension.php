@@ -26,26 +26,9 @@ class MatomoSiteConfigExtension extends DataExtension {
         );
     }
 
-    private function getProtocolAgnosticHostname()
-    {
-        $hostname = '';
-        if ($this->owner->MatomoTrackingURL) {
-            $hostname = rtrim($this->owner->MatomoTrackingURL);
-            $hostname = rtrim($hostname, '/');
-            $hostname .= '/';
-
-            $hostname = ltrim($hostname);
-            $hostname = str_replace(['http://', 'https://', '//'], '', $hostname);
-
-            $hostname = '//' . $hostname;
-        }
-        
-        return $hostname;
-
-    }
-
     public function onBeforeWrite()
     {
-        $this->owner->MatomoTrackingURL = $this->getProtocolAgnosticHostname();
+        // only store protocol agnostic hostname if full URL is provided
+        $this->owner->MatomoTrackingURL = parse_url(trim($this->owner->MatomoTrackingURL ?? ''), PHP_URL_HOST));
     }
 }
