@@ -3,6 +3,7 @@
 namespace ElliotSawyer\Matomo;
 
 use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Security\Member;
 
@@ -18,7 +19,7 @@ class MatomoMemberExtension extends DataExtension
         'DisableMatomo' => 'Boolean'
     ];
 
-    public function updateCMSFields(\SilverStripe\Forms\FieldList $fields)
+    public function updateCMSFields(FieldList $fields)
     {
         $fields->insertAfter(
             'Groups',
