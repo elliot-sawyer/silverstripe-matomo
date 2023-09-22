@@ -1,10 +1,12 @@
 <?php
+
 namespace ElliotSawyer\Matomo;
 
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Dev\SapphireTest;
 
-class MatomoTest extends SapphireTest {
+class MatomoTest extends SapphireTest
+{
     protected static $fixture_file = 'fixtures/Matomo.yml';
     public function testMatomoSiteConfigFields()
     {
@@ -42,7 +44,6 @@ class MatomoTest extends SapphireTest {
         $config5->write();
         $this->assertEquals('//matomotest-test-test.test/', $config5->MatomoTrackingURL);
         $this->assertEquals('1234', $config1->MatomoSiteId);
-
     }
 
     public function testTrackingCode()
@@ -56,6 +57,5 @@ class MatomoTest extends SapphireTest {
         $this->assertRegExp('#var u="//matomotest-test-test.test/";#', $actual);
         $this->assertRegExp("#_paq\.push\(\['setTrackerUrl', u\+'matomo.php'\]\);#", $actual);
         $this->assertRegExp("#_paq\.push\(\['setSiteId', '1234'\]\);#", $actual);
-
     }
 }
