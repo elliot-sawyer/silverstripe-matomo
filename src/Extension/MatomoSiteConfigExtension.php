@@ -1,20 +1,31 @@
 <?php
+
 namespace ElliotSawyer\Matomo;
 
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ToggleCompositeField;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\SiteConfig\SiteConfig;
 
-class MatomoSiteConfigExtension extends DataExtension {
-
+/**
+ * Class \ElliotSawyer\Matomo\MatomoSiteConfigExtension
+ *
+ * @property SiteConfig|MatomoSiteConfigExtension $owner
+ * @property string $MatomoTrackingURL
+ * @property int $MatomoSiteId
+ */
+class MatomoSiteConfigExtension extends DataExtension
+{
     private static $db = [
         'MatomoTrackingURL' => 'Varchar(255)',
-        'MatomoSiteId' => 'Int'
+        'MatomoSiteId'      => 'Int'
     ];
 
-    public function updateCMSFields(\SilverStripe\Forms\FieldList $fields)
+    public function updateCMSFields(FieldList $fields)
     {
-        $fields->addFieldToTab('Root.Analytics',
+        $fields->addFieldToTab(
+            'Root.Analytics',
             ToggleCompositeField::create(
                 'MatomoToggle',
                 'Matomo',
@@ -26,26 +37,22 @@ class MatomoSiteConfigExtension extends DataExtension {
         );
     }
 
+    public function onBeforeWrite()
+    {
+        $this->owner->MatomoTrackingURL = $this->getProtocolAgnosticHostname();
+    }
+
     private function getProtocolAgnosticHostname()
     {
         $hostname = '';
         if ($this->owner->MatomoTrackingURL) {
-            $hostname = rtrim($this->owner->MatomoTrackingURL);
-            $hostname = rtrim($hostname, '/');
-            $hostname .= '/';
-
-            $hostname = ltrim($hostname);
+            $hostname = trim($this->owner->MatomoTrackingURL);
             $hostname = str_replace(['http://', 'https://', '//'], '', $hostname);
+            $hostname = rtrim($hostname, '/');
 
-            $hostname = '//' . $hostname;
+            $hostname = sprintf('//%s/', $hostname);
         }
-        
+
         return $hostname;
-
-    }
-
-    public function onBeforeWrite()
-    {
-        $this->owner->MatomoTrackingURL = $this->getProtocolAgnosticHostname();
     }
 }
