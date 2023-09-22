@@ -2,6 +2,7 @@
 
 namespace ElliotSawyer\Matomo;
 
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ToggleCompositeField;
 use SilverStripe\ORM\DataExtension;
@@ -21,7 +22,7 @@ class MatomoSiteConfigExtension extends DataExtension
         'MatomoSiteId'      => 'Int'
     ];
 
-    public function updateCMSFields(\SilverStripe\Forms\FieldList $fields)
+    public function updateCMSFields(FieldList $fields)
     {
         $fields->addFieldToTab(
             'Root.Analytics',
@@ -45,14 +46,11 @@ class MatomoSiteConfigExtension extends DataExtension
     {
         $hostname = '';
         if ($this->owner->MatomoTrackingURL) {
-            $hostname = rtrim($this->owner->MatomoTrackingURL);
-            $hostname = rtrim($hostname, '/');
-            $hostname .= '/';
-
-            $hostname = ltrim($hostname);
+            $hostname = trim($this->owner->MatomoTrackingURL);
             $hostname = str_replace(['http://', 'https://', '//'], '', $hostname);
+            $hostname = rtrim($hostname, '/');
 
-            $hostname = '//' . $hostname;
+            $hostname = sprintf('//%s/', $hostname);
         }
 
         return $hostname;
